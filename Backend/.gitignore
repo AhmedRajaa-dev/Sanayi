@@ -1,3 +1,6 @@
 test-data/
 node_modules/
 scripts/
+config.env
+.env
+.env.local

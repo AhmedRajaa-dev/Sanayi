@@ -115,15 +115,14 @@ const completeRegister = catchAsync(async (req, res, next) => {
 
 // Login
 const login = catchAsync(async (req, res, next) => {
-  const phoneNumber = req.body.phoneNumber;
-  if (!phoneNumber) {
-    return next(new AppError("Phone number is required", 400));
+  const { phoneNumber, password } = req.body;
+  if (!phoneNumber || !password) {
+    return next(new AppError("Phone number and password are required", 400));
   }
+  const user = await User.findOne({ phoneNumber }).select("+password");
 
-  const user = await User.findOne({ phoneNumber });
-
-  if (!user) {
-    return next(new AppError("User not found", 404));
+  if (!user || !(await user.correctPassword(password, user.password))) {
+    return next(new AppError("Invalid phone number or password", 401));
   }
 
   if (user.role === "admin") {
