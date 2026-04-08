@@ -6,7 +6,9 @@
   "scripts": {
     "start:dev": "nodemon server.js",
     "start:prod": "set NODE_ENV=production&&nodemon server.js",
-    "debug": "ndb server.js"
+    "debug": "ndb server.js",
+    "data:import": "node scripts/import-dev-data.js --import",
+    "data:delete": "node scripts/import-dev-data.js --delete"
   },
   "author": "Kotb",
   "license": "ISC",
@@ -30,7 +32,7 @@
     "nodemailer": "^7.0.5",
     "nodemon": "^3.1.11",
     "otp-generator": "^4.0.0",
-    "redis": "^5.8.2",
+    "redis": "^5.11.0",
     "sharp": "^0.34.4",
     "slugify": "^1.6.6",
     "twilio": "^5.8.0",
