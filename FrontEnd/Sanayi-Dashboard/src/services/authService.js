@@ -25,3 +25,17 @@ export const completeRegister = async (data) => {
   });
   return response.data;
 };
+export const LoginAdmin = async (data) => {
+  const response = await api.post("auth/login/admin", {
+    phoneNumber: data.phoneNumber,
+    password: data.password,
+  });
+  return response.data;
+};
+export const Login = async (data) => {
+  const response = await api.post("auth/login", {
+    phoneNumber: data.phoneNumber,
+    password: data.password,
+  } );
+  return response.data;
+};

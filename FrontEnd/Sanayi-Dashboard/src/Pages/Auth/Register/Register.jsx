@@ -1,8 +1,7 @@
-import axios from "axios";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { registerSchema } from "../../../validation/authSchema";
-import useAuth from "../../../Custom Hook/useAuth.js";
+import useAuth from "../../../hooks/useAuth.js";
 import useAuthStore from "../../../store/authStore";
 import CompleteRegister from "./ComplectRegister.jsx";
 
@@ -16,8 +15,7 @@ const Register = () => {
     resolver: yupResolver(registerSchema),
     mode: "onChange",
   });
-  const { handleSendOtp, handleVerifyOtp, handleCompleteRegister, loading } =
-    useAuth();
+  const { handleSendOtp, handleVerifyOtp, handleCompleteRegister } = useAuth();
   const { otpSent, otpVerified } = useAuthStore();
 
   const onSubmit = async (data) => {

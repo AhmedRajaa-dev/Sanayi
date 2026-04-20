@@ -12,10 +12,10 @@ export const registerSchema = yup.object({
     .string()
     .min(8, "Password must be at least 8 characters")
     .max(24, "Password must be at most 24 characters")
-    .matches(
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/,
-      "Password must contain at least one lowercase letter, one uppercase letter, one number, and one special character",
-    ),
+    // .matches(
+    //   /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/,
+    //   "Password must contain at least one lowercase letter, one uppercase letter, one number, and one special character",)
+    ,
   name: yup.string().min(3).max(50),
   role: yup
     .string()

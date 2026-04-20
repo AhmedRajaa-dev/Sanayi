@@ -1,18 +1,26 @@
 import { create } from "zustand";
 const useAuthStore = create((set) => ({
   phoneNumber: null,
-  registrationToken: null,
   user: null,
+  registrationToken: null,
+  role: null,
+  token: null,
   isAuthenticated: false,
   otpVerified: false,
   otpSent: false,
+
   setPhone: (numPhone) => set({ phoneNumber: numPhone }),
   setRegisterToken: (token) => set({ registrationToken: token }),
   setOtpVerified: (val) => set({ otpVerified: val }),
-  setUser: (user) => set({ user }),
   setOtpSent: (val) => set({ otpSent: val }),
-  setAuthenticated: (val) => set({ isAuthenticated: val }),
-
+  setAuth: (user, token, refreshToken) =>
+    set({
+      user,
+      token,
+      role: user?.role,
+      isAuthenticated: true,
+      refreshToken,
+    }),
   logout: () =>
     set({
       phoneNumber: null,
@@ -20,6 +28,8 @@ const useAuthStore = create((set) => ({
       user: null,
       isAuthenticated: false,
       otpVerified: false,
+      role: null,
+      otpSent: null,
     }),
 }));
 
