@@ -67,9 +67,9 @@ export const useAuth = () => {
         phoneNumber: data.phoneNumber,
         password: data.password,
       });
+      console.log(res.token);
       setAuth(res.data.user, res.token);
       localStorage.setItem("refreshToken", res.refreshToken);
-      console.log(res);
     } catch (err) {
       if (!err?.response.data) {
         console.log("No Server Response");
@@ -89,7 +89,6 @@ export const useAuth = () => {
         password: data.password,
       });
       console.log(res);
-      
 
       setAuth(res.data.user, res.token);
       localStorage.setItem("refreshToken", res.refreshToken);

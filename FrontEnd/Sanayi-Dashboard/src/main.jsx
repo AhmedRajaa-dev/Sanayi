@@ -8,6 +8,7 @@ import "./index.css";
 import Login from "./Pages/Auth/Login/Login.jsx";
 import MainDashboard from "./Pages/Dashboard/MainDashboard.jsx";
 import DashboardLayout from "./layouts/DashboardLayout.jsx";
+import Users from "./Pages/Dashboard/Users/Users.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -15,12 +16,13 @@ createRoot(document.getElementById("root")).render(
       <Routes>
         <Route path="/dashboard" element={<DashboardLayout />}>
           <Route index element={<MainDashboard />} />
+          <Route path="users" element={<Users />} />
         </Route>
         <Route path="/" element={<App />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/loginAdmin" element={<AdminLogin />} />
-        <Route path="/dashboard" element={<MainDashboard />} />
+       
       </Routes>
     </Router>
   </StrictMode>,

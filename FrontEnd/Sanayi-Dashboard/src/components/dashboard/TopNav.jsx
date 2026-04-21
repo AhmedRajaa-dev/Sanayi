@@ -3,7 +3,7 @@ import ButtonDropdown from "../ui/ButtonDropdown";
 
 const TopNav = () => {
   return (
-    <nav className="bg-white border-b border-gray-200 h-16 flex items-center justify-between px-6 sticky top-0 z-30">
+    <nav className="bg-white border-b border-gray-200 h-16 flex items-center justify-between px-6 sticky top-0 z-30 ">
       <div className="logo flex items-center ga-2">
         <div className="bg-blue-600 p-2 rounded-lg">
           <span className="text-white font-bold text-xl">S</span>
