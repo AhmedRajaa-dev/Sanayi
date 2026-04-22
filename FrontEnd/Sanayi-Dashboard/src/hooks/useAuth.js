@@ -7,11 +7,8 @@ import {
   LoginAdmin,
   Login,
 } from "../services/authService";
-import { useState } from "react";
 
 export const useAuth = () => {
-  const [loading, setLoading] = useState(false);
-
   const {
     setPhone,
     setRegisterToken,
@@ -20,7 +17,9 @@ export const useAuth = () => {
     setAuthenticated,
     setOtpSent,
     setOtpVerified,
+    setLoading,
     setAuth,
+    loading,
   } = useAuthStore();
 
   //send Otp

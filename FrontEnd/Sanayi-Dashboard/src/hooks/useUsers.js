@@ -22,17 +22,12 @@ const useUsers = () => {
       console.log("Users response:", res);
       setUsers(res.data.data);
       console.log(users);
-       setLoading(false);
-      
-
+      setLoading(false);
     } catch (err) {
       console.log("Fetch users error:", err.response?.data);
       setError(err.response?.data?.message || "فشل جلب المستخدمين");
-    } 
-  //finally {
-  //     setLoading(false);
-  //   }
-   };
+    }
+  };
   useEffect(() => {
     if (users.length === 0) {
       fetchUsers();

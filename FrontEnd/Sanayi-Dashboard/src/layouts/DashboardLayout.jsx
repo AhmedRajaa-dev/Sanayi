@@ -1,4 +1,4 @@
-import Sidebar from "../components/dashboard/Sidebar.jsx"
+import Sidebar from "../components/dashboard/Sidebar.jsx";
 import TopNav from "../components/dashboard/TopNav.jsx";
 import { Outlet } from "react-router-dom";
 

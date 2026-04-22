@@ -3,8 +3,11 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { registerSchema } from "../../../validation/authSchema";
 import useAuth from "../../../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
+import useAuthStore from "../../../store/authStore";
+import Loading from "../../../components/ui/Loading";
 
 const Login = () => {
+  const {loading}=useAuthStore()
   const { handelLogin } = useAuth();
   const navigate = useNavigate();
   const {
@@ -25,6 +28,8 @@ const Login = () => {
   };
 
   return (
+    <>
+    {loading?(<Loading/>):(
     <section className="bg-gray-100 register h-screen flex flex-col items-center justify-center">
       <form
         onSubmit={handleSubmit(onsubmit)}
@@ -62,6 +67,7 @@ const Login = () => {
           </p>
         </div>
         <button
+        disabled={loading}
           type="submit"
           className="w-full rounded-lg bg-blue-600 py-3 font-bold text-white transition-colors hover:bg-blue-700 active:scale-[0.98] cursor-pointer"
         >
@@ -69,6 +75,8 @@ const Login = () => {
         </button>
       </form>
     </section>
+    )}
+    </>
   );
 };
 
