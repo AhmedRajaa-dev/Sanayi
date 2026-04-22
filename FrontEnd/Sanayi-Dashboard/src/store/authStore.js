@@ -37,7 +37,6 @@ const useAuthStore = create(
           role: null,
           otpSent: null,
           token: null,
-          registrationToken: null,
         }),
     }),
     {

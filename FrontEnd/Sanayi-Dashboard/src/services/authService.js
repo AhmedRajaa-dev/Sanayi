@@ -1,3 +1,4 @@
+import useAuthStore from "../store/authStore";
 import api from "./Api";
 
 export const sendOtp = async (data) => {
@@ -36,6 +37,22 @@ export const Login = async (data) => {
   const response = await api.post("auth/login", {
     phoneNumber: data.phoneNumber,
     password: data.password,
-  } );
+  });
+  return response.data;
+};
+export const Logout = async () => {
+  const token = useAuthStore.getState().token;
+  const response = await api.post(
+    "auth/logout",
+
+    {},
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    },
+  );
+ 
+
   return response.data;
 };

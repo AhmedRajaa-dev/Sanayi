@@ -6,9 +6,13 @@ import {
   completeRegister,
   LoginAdmin,
   Login,
+  Logout,
 } from "../services/authService";
+import { useNavigate } from "react-router-dom";
+import { Factory } from "lucide-react";
 
 export const useAuth = () => {
+  const navigate = useNavigate();
   const {
     setPhone,
     setRegisterToken,
@@ -20,6 +24,7 @@ export const useAuth = () => {
     setLoading,
     setAuth,
     loading,
+    logout,
   } = useAuthStore();
 
   //send Otp
@@ -77,6 +82,8 @@ export const useAuth = () => {
       } else {
         console.log("Registration Failed");
       }
+    } finally {
+      setLoading(false);
     }
   };
   //login
@@ -103,6 +110,24 @@ export const useAuth = () => {
       setLoading(false);
     }
   };
+  //logOut
+  const handleLogout = async () => {
+    setLoading(true);
+
+    try {
+      const res = await Logout();
+
+      if (res.status == "success") {
+        logout();
+      }
+    } catch (err) {
+      console.log(err.response);
+    } finally {
+      setLoading(false);
+
+      navigate("/login");
+    }
+  };
 
   return {
     loading,
@@ -111,6 +136,7 @@ export const useAuth = () => {
     handleCompleteRegister,
     handleLoginAdmin,
     handelLogin,
+    handleLogout,
   };
 };
 export default useAuth;

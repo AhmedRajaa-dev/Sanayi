@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import ButtonDropdown from "../ui/ButtonDropdown";
 
 const TopNav = () => {
+  
   return (
     <nav className="bg-white border-b border-gray-200 h-16 flex items-center justify-between px-6 sticky top-0 z-30 ">
       <div className="logo flex items-center ga-2">
